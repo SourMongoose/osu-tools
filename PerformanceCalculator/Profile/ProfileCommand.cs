@@ -168,12 +168,12 @@ namespace PerformanceCalculator.Profile
 
                                 if (diffAttributes.UpdateDate > calcUpdateDate)
                                 {
-                                    perfCalc.Attributes = diffAttributes.ToOsuDifficultyAttributes();
+                                    //perfCalc.Attributes = diffAttributes.ToOsuDifficultyAttributes();
                                 }
                                 else
                                 {
                                     var newAttr = (OsuDifficultyAttributes)new OsuDifficultyCalculator(ruleset, working).Calculate(mods);
-                                    perfCalc.Attributes = newAttr;
+                                    //perfCalc.Attributes = newAttr;
                                     diffAttributes.MapId = working.BeatmapInfo.OnlineBeatmapID ?? 0;
                                     diffAttributes.UpdateDate = DateTime.Now.ToUniversalTime();
                                     diffAttributes.Mods = legacyMods;
@@ -183,7 +183,7 @@ namespace PerformanceCalculator.Profile
                             else
                             {
                                 var newAttr = (OsuDifficultyAttributes)new OsuDifficultyCalculator(ruleset, working).Calculate(mods);
-                                perfCalc.Attributes = newAttr;
+                                //perfCalc.Attributes = newAttr;
                                 var newdiff = new DiffAttributesDbModel
                                 {
                                     MapId = working.BeatmapInfo.OnlineBeatmapID ?? 0,
@@ -197,13 +197,13 @@ namespace PerformanceCalculator.Profile
                         else
                         {
                             // maps without online id cant be cached properly so dont bother
-                            perfCalc.Attributes = new OsuDifficultyCalculator(ruleset, working).Calculate(mods);
+                            //perfCalc.Attributes = new OsuDifficultyCalculator(ruleset, working).Calculate(mods);
                         }
                     }
                     catch (Exception e)
                     {
                         // if we somehow failed on db interaction - ignore and calculate manually
-                        perfCalc.Attributes = new OsuDifficultyCalculator(ruleset, working).Calculate(mods);
+                        //perfCalc.Attributes = new OsuDifficultyCalculator(ruleset, working).Calculate(mods);
                         Console.WriteLine(e);
                     }
 

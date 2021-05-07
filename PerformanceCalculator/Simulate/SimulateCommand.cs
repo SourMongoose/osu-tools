@@ -120,7 +120,9 @@ namespace PerformanceCalculator.Simulate
             var mapId = Path.GetFileNameWithoutExtension(Beatmap);
 
             OsuDifficultyAttributes attributes;
+            attributes = (OsuDifficultyAttributes)new OsuDifficultyCalculator(ruleset, workingBeatmap).Calculate(mods);
 
+            /*
             using (var diffDb = new DifficultyAttributeCacheContext())
             {
                 try
@@ -176,7 +178,9 @@ namespace PerformanceCalculator.Simulate
 
                 diffDb.SaveChanges();
             }
+            */
 
+            /*
             const int acc_start = 90;
 
             var ppList = new List<double>(100 - acc_start);
@@ -196,6 +200,7 @@ namespace PerformanceCalculator.Simulate
             }
 
             var misspp = new List<ComboGraph>();
+            */
             /*
             var objects = beatmap.HitObjects.Select(x => new OsuHitObjectWithCombo((OsuHitObject)x)).ToList();
 
@@ -248,12 +253,12 @@ namespace PerformanceCalculator.Simulate
                 Id = mapId,
                 BeatmapSetId = beatmap.BeatmapInfo.BeatmapSet?.OnlineBeatmapSetID,
                 Title = workingBeatmap.BeatmapInfo.ToString(),
-                PP = ppList,
-                AimPP = aimppList,
-                TapPP = tapppList,
-                AccPP = accppList,
-                ReadingPP = readingppList,
-                MissPP = misspp,
+                //PP = ppList,
+                //AimPP = aimppList,
+                //TapPP = tapppList,
+                //AccPP = accppList,
+                //ReadingPP = readingppList,
+                //MissPP = misspp,
                 Stars = attributes.StarRating,
                 AimSR = attributes.AimSr,
                 TapSR = attributes.TapSr,
